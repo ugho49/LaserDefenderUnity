@@ -11,16 +11,20 @@ public class PlayerController : MonoBehaviour {
 	float xmax;
 
 	void Start() {
-		float distance = transform.position.z - Camera.main.transform.position.z;
-		Vector3 leftMost = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, distance));
-		Vector3 rightMost = Camera.main.ViewportToWorldPoint (new Vector3 (1, 0, distance));
-
-		xmin = leftMost.x + padding;
-		xmax = rightMost.x - padding;
+		DefineScreenEdges ();
 	}
-
+		
 	void Update () {
 		ControleShip ();
+	}
+
+	void DefineScreenEdges () {
+		float distance = transform.position.z - Camera.main.transform.position.z;
+		Vector3 leftBoundary = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, distance));
+		Vector3 rightBoundary = Camera.main.ViewportToWorldPoint (new Vector3 (1, 0, distance));
+
+		xmin = leftBoundary.x + padding;
+		xmax = rightBoundary.x - padding;
 	}
 
 	void ControleShip() {

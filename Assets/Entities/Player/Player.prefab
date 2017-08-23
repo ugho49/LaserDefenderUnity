@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212088955698263102}
   - component: {fileID: 114155577426320978}
   m_Layer: 0
-  m_Name: PlayerShip
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  padding: 0.5
 --- !u!212 &212088955698263102
 SpriteRenderer:
   m_ObjectHideFlags: 1

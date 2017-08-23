@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: dc62f1a0700710341b4eae3cd1a77214
-timeCreated: 1503393237
+guid: e80cee7e011cefb4299d6a5ae5df597e
+timeCreated: 1503499435
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,9 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: BM block
+  fontName: Stardust Adventure
   fontNames:
-  - BM block
+  - Stardust Adventure
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

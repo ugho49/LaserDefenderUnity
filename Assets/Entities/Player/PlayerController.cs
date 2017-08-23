@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour {
 
 	public float speed = 15f;
 	public float padding = 0.5f;
+	public GameObject projectile;
+	public float projectileSpeed = 5f;
+	public float firingRate = 0.2f;
 
 	float xmin;
 	float xmax;
@@ -28,6 +31,14 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void ControleShip() {
+
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			InvokeRepeating ("Fire", 0.000001f, firingRate);
+		}
+
+		if (Input.GetKeyUp (KeyCode.Space)) {
+			CancelInvoke ("Fire");
+		}
 
 		if (Input.GetKey (KeyCode.LeftArrow)) {
 			//transform.position += new Vector3(-speed * Time.deltaTime, 0f, 0f);
@@ -52,5 +63,10 @@ public class PlayerController : MonoBehaviour {
 		// Restrict the player to the game space
 		float newX = Mathf.Clamp (transform.position.x, xmin, xmax);
 		transform.position = new Vector3 (newX, transform.position.y, transform.position.z);
+	}
+
+	void Fire() {
+		GameObject beam = Instantiate (projectile, transform.position, Quaternion.identity) as GameObject;
+		beam.GetComponent<Rigidbody2D> ().velocity = new Vector3 (0, projectileSpeed, 0);
 	}
 }

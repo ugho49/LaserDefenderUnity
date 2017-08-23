@@ -8,7 +8,6 @@ public class EnemySpawner : MonoBehaviour {
 	public float speed = 3f;
 	public float width = 10f;
 	public float height = 5f;
-	public float y = 0f;
 
 	bool movingRight = true;
 	float xmin;
@@ -40,10 +39,7 @@ public class EnemySpawner : MonoBehaviour {
 	}
 
 	public void OnDrawGizmos() {
-		Vector3 pos = transform.position;
-		pos.y = y;
-
-		Gizmos.DrawWireCube(pos, new Vector3(width, height, 0));
+		Gizmos.DrawWireCube(transform.position, new Vector3(width, height, 0));
 	}
 
 	void HandleFormationMovement() {
@@ -51,8 +47,10 @@ public class EnemySpawner : MonoBehaviour {
 		float leftEdgeOfFormation = transform.position.x - (width * 0.5f);
 		float rightEdgeOfFormation = transform.position.x + (width * 0.5f);
 
-		if (leftEdgeOfFormation <= xmin || rightEdgeOfFormation >= xmax) {
-			movingRight = !movingRight;
+		if (leftEdgeOfFormation <= xmin) {
+			movingRight = true;
+		} else if (rightEdgeOfFormation >= xmax) {
+			movingRight = false;
 		}
 
 		if (movingRight) {

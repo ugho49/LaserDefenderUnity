@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour {
 
 	float xmin;
 	float xmax;
+	float ymin;
+	float ymax;
 
 	void Start() {
 		ScoreKeeper.Reset ();
@@ -34,6 +36,9 @@ public class PlayerController : MonoBehaviour {
 
 		xmin = leftBoundary.x + padding;
 		xmax = rightBoundary.x - padding;
+
+		ymin = -4.4f;
+		ymax = -1.5f;
 	}
 
 	void ControleShip() {
@@ -56,15 +61,17 @@ public class PlayerController : MonoBehaviour {
 			transform.position += Vector3.right * speed * Time.deltaTime;
 		}
 
-		/*if (Input.GetKey (KeyCode.UpArrow)) {
-			//transform.position += new Vector3(0f, speed * Time.deltaTime, 0f);
-			transform.position += Vector3.up * speed * Time.deltaTime;
+		if (Input.GetKey (KeyCode.UpArrow)) {
+			Vector3 newPosition = transform.position + Vector3.up * speed * Time.deltaTime;
+			newPosition.y = Mathf.Clamp (newPosition.y, ymin, ymax);
+			transform.position = newPosition;
 		}
 
 		if (Input.GetKey (KeyCode.DownArrow)) {
-			//transform.position += new Vector3(0f, -speed * Time.deltaTime, 0f);
-			transform.position += Vector3.down * speed * Time.deltaTime;
-		}*/
+			Vector3 newPosition = transform.position + Vector3.down * speed * Time.deltaTime;
+			newPosition.y = Mathf.Clamp (newPosition.y, ymin, ymax);
+			transform.position = newPosition;
+		}
 
 		// Restrict the player to the game space
 		float newX = Mathf.Clamp (transform.position.x, xmin, xmax);

@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
+	public Text healthText;
 	public float health = 500f;
 	public float speed = 15f;
 	public float padding = 0.5f;
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour {
 	}
 		
 	void Update () {
+		UpdateHealthText ();
 		ControleShip ();
 	}
 
@@ -86,6 +89,9 @@ public class PlayerController : MonoBehaviour {
 		// Remove Health
 		health -= projectile.Dammage;
 
+		// Show the health
+		UpdateHealthText();
+
 		// Destroy laser
 		projectile.Hit();
 
@@ -94,5 +100,10 @@ public class PlayerController : MonoBehaviour {
 			GameObject.Destroy (gameObject);
 		}
 
+	}
+
+	void UpdateHealthText() {
+		// Show the health
+		healthText.text = health.ToString ();
 	}
 }

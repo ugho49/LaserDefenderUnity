@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour {
+public class EnemyFormationController : MonoBehaviour {
 
 	public GameObject enemyPrefab;
+	public float spawnDelay = 0.2f;
 	public float speed = 3f;
 	public float width = 10f;
 	public float height = 5f;
@@ -15,11 +16,15 @@ public class EnemySpawner : MonoBehaviour {
 
 	void Start () {
 		DefineScreenEdges ();
-		InitEnemyFormation ();
+		SpawnEnemies ();
 	}
 		
 	void Update () {
 		HandleFormationMovement ();
+
+		if (AllMembersDead ()) {
+			SpawnEnemies ();
+		}
 	}
 
 	void DefineScreenEdges () {
@@ -31,10 +36,23 @@ public class EnemySpawner : MonoBehaviour {
 		xmax = rightBoundary.x;
 	}
 
-	void InitEnemyFormation() {
+	/*void SpawnEnemies() {
 		foreach (Transform child in transform) {
 			GameObject enemy = Instantiate (enemyPrefab, child.transform.position, Quaternion.identity) as GameObject;
 			enemy.transform.parent = child;
+		}
+	}*/
+
+	void SpawnEnemies() {
+		Transform freePosition = NextFreePosition ();
+
+		if (freePosition) {
+			GameObject enemy = Instantiate (enemyPrefab, freePosition.position, Quaternion.identity) as GameObject;
+			enemy.transform.parent = freePosition;
+		}
+
+		if (NextFreePosition ()) {
+			Invoke ("SpawnEnemies", spawnDelay);
 		}
 	}
 
@@ -58,5 +76,25 @@ public class EnemySpawner : MonoBehaviour {
 		} else {
 			transform.position += Vector3.left * speed * Time.deltaTime;
 		}
+	}
+
+	bool AllMembersDead () {
+		foreach (Transform child in transform) {
+			if (child.childCount > 0) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	Transform NextFreePosition() {
+		foreach (Transform child in transform) {
+			if (child.childCount == 0) {
+				return child;
+			}
+		}
+
+		return null;
 	}
 }

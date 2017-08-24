@@ -115,8 +115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 150
   projectile: {fileID: 1181482837708840, guid: 0d5c90e6a81e74946ae589b9d427f953, type: 2}
-  projectileSpeed: 5
-  shotsPerSeconds: 0.3
+  projectileSpeed: 10
+  shotsPerSeconds: 0.5
 --- !u!212 &212467834600607932
 SpriteRenderer:
   m_ObjectHideFlags: 1

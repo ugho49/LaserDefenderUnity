@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 212110058535430510}
   - component: {fileID: 50149837878777064}
   - component: {fileID: 61225439179838702}
-  m_Layer: 0
-  m_Name: Laser
+  - component: {fileID: 114529628297233154}
+  m_Layer: 10
+  m_Name: EnemyLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1181482837708840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5472913, y: -1.6806927, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,6 +88,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.09, y: 0.37}
   m_EdgeRadius: 0
+--- !u!114 &114529628297233154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1181482837708840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe0eb732787f2246a25740696df503c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dammage: 50
 --- !u!212 &212110058535430510
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -119,7 +132,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dc3198cc860f44a30b9f136a5af8d512, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 43a6d76ed666fac48894a0950c77de4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

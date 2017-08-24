@@ -12,11 +12,13 @@ public class PlayerController : MonoBehaviour {
 	public GameObject projectile;
 	public float projectileSpeed = 5f;
 	public float firingRate = 0.2f;
+	public LevelManager levelManager;
 
 	float xmin;
 	float xmax;
 
 	void Start() {
+		ScoreKeeper.Reset ();
 		DefineScreenEdges ();
 	}
 		
@@ -97,7 +99,7 @@ public class PlayerController : MonoBehaviour {
 
 		// Check the remining health
 		if (health <= 0) {
-			GameObject.Destroy (gameObject);
+			Die ();
 		}
 
 	}
@@ -105,5 +107,10 @@ public class PlayerController : MonoBehaviour {
 	void UpdateHealthText() {
 		// Show the health
 		healthText.text = health.ToString ();
+	}
+
+	void Die() {
+		GameObject.Destroy (gameObject);
+		levelManager.LoadLevel ("Win");
 	}
 }

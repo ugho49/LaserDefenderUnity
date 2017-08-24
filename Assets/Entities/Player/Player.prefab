@@ -129,6 +129,7 @@ MonoBehaviour:
   projectile: {fileID: 1181482837708840, guid: 1e15007ec2a474cccadf400b423bba95, type: 2}
   projectileSpeed: 5
   firingRate: 0.2
+  levelManager: {fileID: 0}
 --- !u!212 &212088955698263102
 SpriteRenderer:
   m_ObjectHideFlags: 1

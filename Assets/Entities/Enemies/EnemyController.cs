@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour {
 	public GameObject projectile;
 	public float projectileSpeed = 1f;
 	public float shotsPerSeconds = 0.5f;
+	public int scoreValue = 150;
 
 	void Update() {
 		float probabilityOfFiring = Time.deltaTime * shotsPerSeconds;
@@ -36,6 +37,7 @@ public class EnemyController : MonoBehaviour {
 
 		// Check the remining health
 		if (health <= 0) {
+			ScoreKeeper.AddPoints (scoreValue);
 			GameObject.Destroy (gameObject);
 		}
 
